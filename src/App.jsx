@@ -3,19 +3,15 @@ import AddTodo from "./components/AddTodo";
 import TodoCard from "./components/TodoCard";
 import { getRequest } from "./config/axiosConfig";
 
-const getTodo = () => {
-
-  return getRequest("get-todo");
-}
+const getTodo = () => getRequest("get-todo");
 
 function App() {
 
   const { data, refetch } = useQuery({
     queryKey: ['todos'],
     queryFn: getTodo,
-
   })
-  console.log(data);
+
 
   return (
     <main className="max-w-4xl mx-auto px-5">

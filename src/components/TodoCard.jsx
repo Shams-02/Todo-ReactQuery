@@ -1,29 +1,19 @@
 import { useMutation } from "@tanstack/react-query"
-import axios from "axios"
 import { deleteRequest, patchRequest } from "../config/axiosConfig"
 
 const TodoCard = ({ item, refetch }) => {
 
   // Mutations
   const mutation = useMutation({
-    mutationFn: (data) => {
-      return patchRequest(`update/${item._id}`, data)
-    },
-    onSuccess: () => {
-      refetch()
-    }
+    mutationFn: (data) => patchRequest(`update/${item._id}`, data),
+    onSuccess: () => refetch()
   })
 
   // Mutations
   const deleteMutation = useMutation({
-    mutationFn: () => {
-      return deleteRequest(`delete/${item._id}`)
-    },
-    onSuccess: () => {
-      refetch()
-    }
+    mutationFn: () => deleteRequest(`delete/${item._id}`),
+    onSuccess: () => refetch()
   })
-
 
   const updateStatus = (e) => {
     const status = e.target.checked;
