@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { useState } from 'react'
+import { postRequest } from '../config/axiosConfig';
 
 const AddTodo = ({ refetch }) => {
 
@@ -9,7 +10,7 @@ const AddTodo = ({ refetch }) => {
   // Mutations
   const mutation = useMutation({
     mutationFn: (data) => {
-      return axios.post('http://localhost:3000/add-todo', data)
+      return postRequest("add-todo", data)
     },
     onSuccess: () => {
       refetch()
